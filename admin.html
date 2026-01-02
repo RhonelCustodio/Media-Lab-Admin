@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Oversight | Vantage Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2c0ac0003c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="admin-style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <div id="adminOverlay">
+        <div class="loader-ring" id="overlayLoader"></div>
+        <p id="overlayStatus">Processing Request...</p>
+        <div id="pinEntryUI" style="display: none; text-align: center; margin-top: 1.5rem; animation: fadeInUp 0.3s ease;">
+            <div class="brand-badge" style="margin-bottom: 2rem;">Security Verification</div>
+            <input type="password" id="overlayPinInput" placeholder="ENTER PIN" 
+                   style="text-align: center; letter-spacing: 8px; font-weight: 800; width: 220px; margin-bottom: 1.5rem; background: rgba(0,0,0,0.3); font-size: 1.2rem;">
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button id="cancelPinBtn" class="secondary-action" style="padding: 0.7rem 1.5rem;">Cancel</button>
+                <button id="confirmPinBtn" class="primary-action" style="padding: 0.7rem 1.5rem; width: auto;">Verify Identity</button>
+            </div>
+        </div>
+    </div>
+    <div id="loginSection" class="admin-container fade-in-up">
+        <div class="login-header">
+            <div class="brand-badge">Vantage Art Labs</div>
+            <h1>Admin Access</h1>
+            <p>Enter credentials to access system oversight.</p>
+        </div>
+        <div class="form-group">
+            <input type="text" id="loginUser" placeholder="Username" autocomplete="username">
+        </div>
+        <div class="form-group">
+            <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button id="loginBtn" class="primary-action">Authorize & Enter</button>
+        <div class="login-footer">
+            <p>Protected by 256-bit AES Encryption</p>
+        </div>
+    </div>
+    <div id="adminContent" class="admin-container view-hidden">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>System Oversight</h1>
+                <p>Real-time User Management Portal</p>
+            </div>
+            <button id="logoutBtn" class="secondary-action">Terminate Session</button>
+        </header>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon u-bg-blue"><i class="fa-solid fa-user" style="color: #ffffff;"></i></div>
+                <div class="stat-info">
+                    <span class="stat-label">Total Registered</span>
+                    <h2 id="count" class="stat-value">0</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon u-bg-green"><i class="fa-solid fa-bolt" style="color: #FFD43B;"></i></div>
+                <div class="stat-info">
+                    <span class="stat-label">Server Status</span>
+                    <h2 class="stat-value" style="color: var(--success)">Optimal</h2>
+                </div>
+            </div>
+        </div>
+        <div class="utility-bar">
+            <div class="search-wrapper">
+                <input type="text" id="adminSearch" placeholder="Filter by email address...">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Identity</th>
+                        <th>Status</th> <th>Security Key</th>
+                        <th>Joined Date</th>
+                        <th style="text-align: right;">Operations</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody"></tbody>
+            </table>
+        </div>
+        <footer class="admin-footer">
+            <p>&copy; 2026 Vantage Art Labs. Hardware Accelerated Dashboard.</p>
+        </footer>
+    </div>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
